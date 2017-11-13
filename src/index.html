@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" style="width: 100%">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartWay</title>
+  <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+   <link rel="stylesheet" type="text/css" href="style.css">
+    <script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+</head>
+<body>
+	  <app-root></app-root>
+</body>
+<script type="text/javascript">
+	var bgColor;
+var effect = 'animated bounceInLeft'; /* bounceIn, bounceInUp, bounceInDown, bounceInLeft,
+										 bounceInRight, rotateIn, rotateInUpLeft, rotateInDownLeft,
+										 rotateInUpRight, rotateInDownRight  */
+
+$('.all-content').hide();
+
+$('.content li').click(function(){
+	$('.card-front, .card-back').hide();
+	$('.content li').removeClass('active').hide().css('border','none');
+	$(this).addClass('active').show();
+	bgColor = $('.active .card-back').css('background-color');
+	$('.content').css('background-color',bgColor);
+	$('.close, .all-content').show();
+	$('.responsive').append('<span class="close">close</span>').addClass(effect);
+});
+
+
+$('.responsive').on('click', '.close', function(){
+
+	$('.close').remove();
+	bgColor = $('.active .card-front').css('background-color');
+	$('.responsive').removeClass(effect);
+	$('.all-content').hide();
+	$('.content li').removeClass('active').show().css({ 'border-bottom':'1px solid #2c2c2c',
+													    'border-left':'1px solid #2c2c2c' });
+	$('.card-front, .card-back').show();
+	$('.content').css('background-color',bgColor);
+});
+</script>
+</html>
